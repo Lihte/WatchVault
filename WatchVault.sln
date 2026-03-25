@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B06651C2-4FBD-408F-84C6-2DF07C28F102}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchVault.Api", "src\WatchVault.Api\WatchVault.Api.csproj", "{D0BED5EC-C893-4583-AE43-7E4267EAA62C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchVault.Core", "src\WatchVault.Core\WatchVault.Core.csproj", "{C6DF1E91-339B-4503-81C7-F89E0F101844}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchVault.Infrastructure", "src\WatchVault.Infrastructure\WatchVault.Infrastructure.csproj", "{0A2508A7-C68E-449A-83AD-06D6A5D438BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F7CCFE4B-DEF2-48E7-8710-E0F6A83EA21E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchVault.Tests", "tests\WatchVault.Tests\WatchVault.Tests.csproj", "{D02DD68F-DAC0-4CD6-ABDC-D2466876D09A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0BED5EC-C893-4583-AE43-7E4267EAA62C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0BED5EC-C893-4583-AE43-7E4267EAA62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0BED5EC-C893-4583-AE43-7E4267EAA62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0BED5EC-C893-4583-AE43-7E4267EAA62C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6DF1E91-339B-4503-81C7-F89E0F101844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6DF1E91-339B-4503-81C7-F89E0F101844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6DF1E91-339B-4503-81C7-F89E0F101844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6DF1E91-339B-4503-81C7-F89E0F101844}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A2508A7-C68E-449A-83AD-06D6A5D438BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A2508A7-C68E-449A-83AD-06D6A5D438BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A2508A7-C68E-449A-83AD-06D6A5D438BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A2508A7-C68E-449A-83AD-06D6A5D438BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D02DD68F-DAC0-4CD6-ABDC-D2466876D09A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D02DD68F-DAC0-4CD6-ABDC-D2466876D09A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D02DD68F-DAC0-4CD6-ABDC-D2466876D09A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D02DD68F-DAC0-4CD6-ABDC-D2466876D09A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D0BED5EC-C893-4583-AE43-7E4267EAA62C} = {B06651C2-4FBD-408F-84C6-2DF07C28F102}
+		{C6DF1E91-339B-4503-81C7-F89E0F101844} = {B06651C2-4FBD-408F-84C6-2DF07C28F102}
+		{0A2508A7-C68E-449A-83AD-06D6A5D438BA} = {B06651C2-4FBD-408F-84C6-2DF07C28F102}
+		{D02DD68F-DAC0-4CD6-ABDC-D2466876D09A} = {F7CCFE4B-DEF2-48E7-8710-E0F6A83EA21E}
+	EndGlobalSection
+EndGlobal
