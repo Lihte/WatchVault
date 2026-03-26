@@ -3,6 +3,9 @@ public class ExternalId
     public int Id { get; set; }
     public int MediaId { get; set; }
     public string Source { get; set; } = string.Empty;
+    public string Value { get; set; } = string.Empty;
+
+    public Media Media { get; set; } = null!;
 
 }
 
