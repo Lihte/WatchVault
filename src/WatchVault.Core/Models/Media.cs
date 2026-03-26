@@ -15,6 +15,7 @@ public class Media
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
     public ICollection<ExternalId> ExternalIds { get; set; } = new List<ExternalId>();
+    public ICollection<WatchEntry> WatchEntries { get; set; } = new List<WatchEntry>();
 }
 
 public enum MediaType { Movie, TvShow, Anime, Cartoon }
