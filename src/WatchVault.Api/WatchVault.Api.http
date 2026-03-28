@@ -1,6 +1,6 @@
 @WatchVault.Api_HostAddress = http://localhost:5062
 
-GET {{WatchVault.Api_HostAddress}}/weatherforecast/
+GET {{WatchVault.Api_HostAddress}}/watchlist/
 Accept: application/json
 
 ###

@@ -1,16 +1,51 @@
+using System.Net.Http.Headers;
 using Microsoft.EntityFrameworkCore;
+using Polly;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Controllers
-builder.Services.AddControllers();
-
 // Database
-builder.Services.AddDbContext<WatchVaultDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<WatchVaultDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// TMDB
+if (!builder.Environment.IsEnvironment("Test"))
+{
+    var tmdbApiKey = builder.Configuration["Tmdb:ApiKey"]
+        ?? throw new InvalidOperationException("TMDB API key not configured");
+
+    builder.Services.AddHttpClient<TmdbClient>(client =>
+    {
+        client.BaseAddress = new Uri("https://api.themoviedb.org/3/");
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tmdbApiKey);
+    })
+    .AddTransientHttpErrorPolicy(policy =>
+        policy.WaitAndRetryAsync(3, attempt =>
+            TimeSpan.FromSeconds(Math.Pow(2, attempt))));
+
+}
+
+// Jikan
+
+// Redis
+if (!builder.Environment.IsEnvironment("Test"))
+{
+    var redisConnection = builder.Configuration["Redis:ConnectionString"]
+    ?? throw new InvalidOperationException("Redis Connection String not configured");
+
+    builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnection));
+}
+
+// Repositories
+builder.Services.AddScoped<IMediaRepository, MediaRepository>();
+builder.Services.AddScoped<IWatchEntryRepository, WatchEntryRepository>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -25,3 +60,5 @@ app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }
