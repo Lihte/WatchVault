@@ -474,4 +474,4 @@ riderModule.iml
 /_ReSharper.Caches/```
 
 # Specific files
-src/WatchVault.Api/appsettings.Development.json
+appsettings.*.json
