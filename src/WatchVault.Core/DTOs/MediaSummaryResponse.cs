@@ -11,6 +11,6 @@ public class MediaSummaryResponse
     public string? PosterPath { get; set; }
     public List<string> Genres { get; set; } = new();
     public bool MetadataSynced { get; set; }
-    // public List<ExternalIdResponse> ExternalIds { get; set; } = new();
+    public List<ExternalIdResponse> ExternalIds { get; set; } = new();
     // Note: NO WatchEntries collection here — that's what breaks the cycle
 }

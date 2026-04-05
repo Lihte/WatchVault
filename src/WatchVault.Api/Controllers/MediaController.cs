@@ -8,10 +8,12 @@ namespace WatchVault.Api.Controllers
     public class MediaController : ControllerBase
     {
         private readonly TmdbClient _tmdb;
+        private readonly JikanClient _jikan;
 
-        public MediaController(TmdbClient tmdb)
+        public MediaController(TmdbClient tmdb, JikanClient jikan)
         {
             _tmdb = tmdb;
+            _jikan = jikan;
         }
 
         [HttpGet("search")]
@@ -22,7 +24,8 @@ namespace WatchVault.Api.Controllers
 
             if(type == MediaType.Anime)
             {
-                // WIP Jikan
+                var animeResults = await _jikan.SearchAsync(q, ct);
+                return Ok(animeResults);
             }
 
             var results = await _tmdb.SearchAsync(q, ct);

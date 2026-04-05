@@ -7,21 +7,21 @@ namespace WatchVault.Api.Controllers
     [ApiController]
     public class WatchListController : ControllerBase
     {
-        private readonly IWatchEntryRepository _entires;
+        private readonly IWatchEntryRepository _entries;
         private readonly IMediaRepository _media;
 
-        public WatchListController(IWatchEntryRepository entires, IMediaRepository media)
+        public WatchListController(IWatchEntryRepository entries, IMediaRepository media)
         {
-            _entires = entires;
+            _entries = entries;
             _media = media;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll(CancellationToken ct)
         {
-            var entires = await _entires.GetAllAsync(ct);
+            var entries = await _entries.GetAllAsync(ct);
 
-            var response = entires.Select(e => new WatchEntryResponse
+            var response = entries.Select(e => new WatchEntryResponse
             {
                 Id = e.Id,
                 Status = e.Status,
@@ -77,7 +77,7 @@ namespace WatchVault.Api.Controllers
                 Status = WatchStatus.Planning
             };
 
-            var created = await _entires.AddAsync(entry, ct);
+            var created = await _entries.AddAsync(entry, ct);
 
             var response = new WatchEntryResponse
             {

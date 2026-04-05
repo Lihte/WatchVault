@@ -5,6 +5,8 @@ using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
+Console.WriteLine($"The Environment is '{builder.Environment.EnvironmentName}'");
+
 // Database
 builder.Services.AddDbContext<WatchVaultDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -27,6 +29,16 @@ if (!builder.Environment.IsEnvironment("Test"))
 }
 
 // Jikan
+if (!builder.Environment.IsEnvironment("Test"))
+{
+    builder.Services.AddHttpClient<JikanClient>(client =>
+    {
+        client.BaseAddress = new Uri("https://api.jikan.moe/v4/");
+    })
+    .AddTransientHttpErrorPolicy(policy =>
+        policy.WaitAndRetryAsync(3, attempt =>
+            TimeSpan.FromSeconds(Math.Pow(2, attempt))));
+}
 
 // Redis
 if (!builder.Environment.IsEnvironment("Test"))

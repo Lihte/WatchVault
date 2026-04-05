@@ -13,7 +13,7 @@ public class WatchlistEndpointTests : IClassFixture<WatchVaultApiFactory>
     }
 
     [Fact]
-    public async Task PostWAtchlist_WithValidRequest_Returns201()
+    public async Task PostWatchlist_WithValidRequest_Returns201()
     {
         var request = new AddToWatchlistRequest(
             Title: "The Boondock Saints",
@@ -31,9 +31,9 @@ public class WatchlistEndpointTests : IClassFixture<WatchVaultApiFactory>
     public async Task GetWatchlist_AfterAdding_ReturnsEntry()
     {
         var request = new AddToWatchlistRequest(
-            Title: "The Boondock Saints",
-            Type: MediaType.Movie,
-            Source: "tmdb",
+            Title: "Kodomo no Jikan",
+            Type: MediaType.Anime,
+            Source: "jikan",
             ExternalId: "129"
         );
 
